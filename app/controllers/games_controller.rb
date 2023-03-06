@@ -11,13 +11,11 @@ class GamesController < ApplicationController
     @guess = params[:word]
     @grid = params[:letters]
     if word_valid? && word_in_grid?
-      @score = 'valid'
-    elsif word_valid?
-      @score = 'word in dictionary but not grid'
+      @score = "Congratulations! #{@guess.upcase} is a valid word!"
     elsif word_in_grid?
-      @score = 'word in grid but not dictionary'
+      @score = "Sorry, #{@guess.upcase} does not seem to be a valid English word..."
     else
-      @score = 'please submit a valid word from the grid'
+      @score = "Sorry, #{@guess.upcase} can't be built out of #{@grid}"
     end
   end
 
